@@ -1,12 +1,13 @@
 # INSTALL
 
 install elasticsearch
-
+----
 for macos:
 
 brew install elasticsearch
 
 brew services start elasticsearch
+----
 
 bundle install
 

@@ -1,0 +1,18 @@
+= form_tag '', method: :get do
+  %ul
+    %li
+      %label Klass
+      = select_tag 'klass', options_for_select(SearchService::KLASSES, params[:klass])
+    %li
+      %label Term
+      = text_field_tag 'term', params[:term]
+  
+    - @search.available_filters.each do |filter|
+      %li
+        %label= filter
+        = text_field_tag "filters[#{filter}]", params.dig(:filters, filter)
+  %button Search
+
+%ul
+  - @objects.each do |object|
+    = render partial: "shared/#{object.class.to_s.underscore}", locals: { item: object }

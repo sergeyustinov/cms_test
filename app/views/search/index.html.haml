@@ -1,0 +1,7 @@
+= form_tag '', method: :get do
+  = text_field_tag 'term', params[:term]
+  %button Search
+
+%ul
+  - @objects.each do |object|
+    = render partial: "shared/#{object.class.to_s.underscore}", locals: { item: object }

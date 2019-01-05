@@ -21,9 +21,9 @@ class SearchService
     term = term.presence || '*'
 
     Searchkick.search(term, index_name: @klasses, where: where)
-  rescue Searchkick::MissingIndexError # @todo for debug, remove it
-    KLASSES.each{|klass| klass.constantize.reindex }
-    super(term)
+  # rescue# Searchkick::MissingIndexError # @todo for debug, remove it
+  #   KLASSES.each{|klass| klass.constantize.reindex }
+  #   search(term)
   end
 
   def main_klass
